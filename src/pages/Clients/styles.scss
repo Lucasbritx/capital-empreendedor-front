@@ -1,0 +1,61 @@
+.wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.list-clients {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 2fr));
+  grid-gap: 1rem;
+}
+
+.list-clients .container-client {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: 0.3s;
+}
+
+.list-clients .container-client .client-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.list-clients .container-client .description {
+  position: absolute;
+  height: 50%;
+  opacity:0;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  color: #ffffff;
+  cursor: -webkit-zoom-in;
+}
+
+.list-clients .container-client:hover .description {
+  opacity: 1;
+}
+
+.list-clients .container-client .description:focus {
+  opacity: 1;
+}
+
+.list-clients .container-client:hover .client-image {
+  opacity: 0.3;
+}
+
+.list-clients .container-client:hover {
+  transform: translate(0, -10px);
+}
