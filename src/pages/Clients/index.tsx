@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import ClientLogo from '../../assets/client.png'
+import ClientLogo from "../../assets/client.png";
 import "./styles.scss";
 import api from "../../middlewares/axios";
 import Modal from "../../components/Modal";
@@ -42,7 +42,7 @@ const Clients: React.FC = () => {
 
   const handleKeypress = (e: any, clientEmail: string) => {
     if (e.keyCode === ENTER_KEY_1 || ENTER_KEY_2) {
-     return renderModal(clientEmail);
+      return renderModal(clientEmail);
     }
     return null;
   };
@@ -54,23 +54,21 @@ const Clients: React.FC = () => {
 
   return (
     <>
-    <div className="wrapper">
-      <div className="content">
-        <ul className="list-clients">
-          {clients.map((client) => {
-            return (
-                <li 
-                key={client.email}
-                className="container-client">
+      <div className="wrapper">
+        <div className="content">
+          <ul className="list-clients">
+            {clients.map((client) => {
+              return (
+                <li key={client.email} className="container-client">
                   <img
-                  className="client-image"
-                  alt={IMAGE_ALT}
-                  src={ClientLogo}
+                    className={`client-image ${client.isActive && "is-active"}`}
+                    alt={IMAGE_ALT}
+                    src={ClientLogo}
                   />
                   <div
                     role="button"
                     tabIndex={0}
-                    onKeyPress={(e)=> handleKeypress(e, client.email)}
+                    onKeyPress={(e) => handleKeypress(e, client.email)}
                     onClick={() => {
                       renderModal(client.email);
                     }}
@@ -79,18 +77,13 @@ const Clients: React.FC = () => {
                     {client.name}
                   </div>
                 </li>
-            );
-          })}
-        </ul>
+              );
+            })}
+          </ul>
+        </div>
       </div>
-    </div>
-    <Modal
-        show={showModal}
-        handleClose={() => setShowModal(false)}
-      >
-        <ClientInfo 
-        email={clientEmail ? clientEmail : ''}
-        />
+      <Modal show={showModal} handleClose={() => setShowModal(false)}>
+        <ClientInfo email={clientEmail ? clientEmail : ""} />
       </Modal>
     </>
   );

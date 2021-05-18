@@ -22,7 +22,9 @@ const ClientInfo: React.FC<IClientInfoProps> = ({ email }) => {
   const [opportunities, setOpportunities] = useState<IClientOpportunity[]>([]);
 
   const getClientOpportunities = async () => {
-    const { data } = await api.get<IClientOpportunityRespose>(`/opportunities/${email}`);
+    const { data } = await api.get<IClientOpportunityRespose>(
+      `/opportunities/${email}`
+    );
     return data;
   };
 
@@ -34,7 +36,22 @@ const ClientInfo: React.FC<IClientInfoProps> = ({ email }) => {
     getClientsList();
   }, []);
 
-  return <div>{opportunities && opportunities.map(it => it.name)}</div>;
+  return (
+    <div className="wrapper">
+      <ul className="list-items">
+        {opportunities.map((item) => {
+          return (
+            <li className="item" key={item.name}>
+              <div>{item.name}</div>
+              <div>
+                <button>Oi</button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 };
 
 export default ClientInfo;
